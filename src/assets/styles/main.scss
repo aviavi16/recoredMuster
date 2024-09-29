@@ -7,13 +7,14 @@
 // @import "basics/forms";
 
 /* pages */
-@import "pages/homepage";
+@import "pages/home";
+@import "pages/dashboard";
+
 
 /* Components */
 @import "cmps/root-cmp";
-
+@import "cmps/left-sidebar";
 @import "cmps/player";
-@import "cmps/app-footer";
 @import "cmps/app-header"
 
 

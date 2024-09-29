@@ -1,51 +1,23 @@
 .main-app{
     box-sizing: border-box;
-    background-color: #000;
+    background-color: white;
     display: grid;
     height: inherit;
     grid-template-columns: auto 1fr;
-    grid-template-rows: auto 1fr auto;
+    grid-template-rows: auto 1fr;
     grid-template-areas:
-        "header header header"
-        "left-sidebar main-view right-sidebar"
-        "footer footer footer";
+        " header header"
+        "left-sidebar main-view";
     gap: 8px;
     padding: 8px;
     position: relative;
-    color: white;
+    color: black;
     
 }
 
-.leftSidebar-container{
-    grid-area: left-sidebar;
-    display: flex;
-    position: relative;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    background-color: #000;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    min-height: 0;
-    width: calc(var(--left-sidebar-width)* 1px);
-    //z-index: var(--left-sidebar-grid-area-z-index);
+.container{
+    width : 100%;
+    grid-area: main-view;
 }
 
-.LayoutResizer__resize-bar{
-    .LayoutResizer__resize-bar {
-        display: flex;
-        align-items: center;
-        cursor: -webkit-grab;
-        cursor: grab;
-        height: 100%;
-        justify-content: center;
-        opacity: 0;
-        position: absolute;
-        touch-action: none;
-        transition: opacity .15s ease-out;
-        width: 8px;
-    }
-}
 
-.rightSidebar-container{
-    grid-area: right-sidebar;
-}

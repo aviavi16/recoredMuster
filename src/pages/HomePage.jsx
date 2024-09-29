@@ -1,126 +1,54 @@
-import { useEffect, useRef } from "react";
-import Highcharts from 'highcharts';
+import { useEffect } from "react"
+import { utilService } from "../services/util.service"
+import Roomonitor from "../assets/imgs/roomonitor.png"
 
 export function HomePage() {
-    function createChart(){
-        const chart = Highcharts.chart('chart-container', {
-
-            chart: {
-                type: 'pie',
-                renderTo: document.getElementById('chart-container')
-            },
-        
-            title: {
-                text: 'Born persons, by girls\' name'
-            },
-        
-            subtitle: {
-                text: 'Resize the frame or click buttons to change appearance'
-            },
-        
-            legend: {
-                align: 'right',
-                verticalAlign: 'middle',
-                layout: 'vertical'
-            },
-        
-            xAxis: {
-                categories: ['2019', '2020', '2021'],
-                labels: {
-                    x: -10
-                }
-            },
-        
-            yAxis: {
-                allowDecimals: false,
-                title: {
-                    text: 'Amount'
-                }
-            },
-        
-            series: [{
-                type: 'pie',
-                name: 'Browser share',
-                data: [
-                    ['Firefox', 45.0],
-                    ['IE',      26.8],
-                    ['Safari',  8.5],
-                    ['Opera',   6.2],
-                    ['Others',  0.7]
-                ]
-            }],
-        
-            responsive: {
-                rules: [{
-                    condition: {
-                        maxWidth: 500
-                    },
-                    chartOptions: {
-                        legend: {
-                            align: 'center',
-                            verticalAlign: 'bottom',
-                            layout: 'horizontal'
-                        },
-                        yAxis: {
-                            labels: {
-                                align: 'left',
-                                x: 0,
-                                y: -5
-                            },
-                            title: {
-                                text: null
-                            }
-                        },
-                        subtitle: {
-                            text: null
-                        },
-                        // credits: {
-                        //     enabled: false
-                        // }
-                    }
-                }]
-            }
-        });
+    useEffect( () => {
+        closeSideBar()
+    }, []) 
+    function closeSideBar(){
+        var leftSidebar = document.getElementById('leftSidebar')
+        leftSidebar.style.display = 'none'
     }
-    
-    
-    
-    function onChangeChartSize( {target }){
-        var chartEl = document.getElementById('chart-container')
-
-        switch (target.value){
-            case 'small': 
-                chartEl.style.width= '250px'
-                break;
-            case 'big':
-                chartEl.style.width= '550px'
-                break;
-            case 'auto':
-                chartEl.style.width= '100%'
-                break;
-            default:
-                chartEl.style.width= '350px'
-                break;
-        }
-
-    }
-
     return (
         <section className="home-container">
+
             <h1>    Home sweet Home     </h1> 
-            
-            <div onClick={createChart}> 
-                load graph
-                <div id="chart-container"></div>
+            <div className="content-wrapper">
+                <div className="content-sub-wrapper">
+                    <div className="image-text-left">
+                        <div className="image-text">
+                            <div className="title">
+                                <h1>Noise Detection</h1>
+                            </div>
+
+                            <div className="image-title-text">
+                                <h3>Monitor noise levels in real time</h3>
+                            </div>
+                            <div className="image-paragraph-text">
+                                <p> {utilService.makeLorem()} </p>
+                                <p> This is a paragraph </p>
+                                <p> This is another paragraph </p>
+                                <p> This is another paragraph </p>
+                                <p> This is a paragraph </p>
+
+                            </div>
+
+                        </div>
+                        <div className="learn-more-container">
+                            <a href="#como-funciona" title="learn-more" className="learn-more-btn">Learn More</a>
+                        </div>
+                    </div>
+                    
+                    <div className="img-container">
+                            <img src={Roomonitor} />
+                    </div>
+                </div>     
             </div>
-            <div className="buttons-container">
-                <input type="button" id="small-btn" value='small' onClick={onChangeChartSize} />
-                <input type="button" id="large-btn" value='big'  onClick={onChangeChartSize} />
-                <input type="button" id="auto-btn" value='auto'  onClick={onChangeChartSize} />
-            </div>
             
-         
-        </section >
+       </section >
     )
 }
+
+
 
